@@ -10,9 +10,10 @@ import pyperclip
 
 if len(sys.argv) > 1:
     PACKAGE_XML = sys.argv[1]
-elif os.path.exists('package.xml'):
-    PACKAGE_XML = 'package.xml'
 else:
+    PACKAGE_XML = 'package.xml'
+
+if not os.path.exists(PACKAGE_XML):
     print("No package.xml found.\nEither run in the same directory as a "
           "package.xml, or specify the location.\n"
           "    e.g. 'python pypado.py manifest/package.xml'")
