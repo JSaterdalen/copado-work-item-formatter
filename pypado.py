@@ -13,12 +13,14 @@ if len(sys.argv) > 1:
 elif os.path.exists('package.xml'):
     PACKAGE_XML = 'package.xml'
 else:
-    print("No package.xml found. Either run in the same directory as a \
-        package.xml, or pass it e.g. 'pypado manifest/package.xml'")
+    print("No package.xml found.\nEither run in the same directory as a "
+          "package.xml, or specify the location.\n"
+          "    e.g. 'python pypado.py manifest/package.xml'")
+    exit()
 
 with open(os.path.expanduser(PACKAGE_XML), 'r') as f:
     file = f.read()
-soup = BeautifulSoup(file, 'xml')
+soup = BeautifulSoup(file, 'lxml')
 
 types = soup.find_all('types')
 component_list = []
